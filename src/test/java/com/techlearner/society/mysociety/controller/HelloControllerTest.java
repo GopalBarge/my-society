@@ -19,7 +19,7 @@ public class HelloControllerTest {
 
     @Test
     public void putHello() {
-        System.out.println("PUT");
+       assertTrue(false);
 
     }
 
