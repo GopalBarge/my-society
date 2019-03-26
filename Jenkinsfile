@@ -12,6 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                 gradlew('clean', 'test')
             }
         }
         stage('Deploy') {
@@ -25,8 +26,8 @@ def gradlew(String... args) {
     echo 'Running step....'+args
    /* sh "gradlew ${args.join(' ')} -s" */
    if (isUnix()) {
-   sh './gradlew clean build'
+   sh './gradlew ${args.join(' ')}'
    } else {
-   bat 'gradlew.bat clean build'
+   bat 'gradlew.bat ${args.join(' ')}'
    }
 }
