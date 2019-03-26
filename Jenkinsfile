@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        gradle "gradle-5.3"
-    }
+                    jdk 'jdk8'
+                   }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                  sh 'gradle --version'
+                 sh './gradlew build'
             }
         }
         stage('Test') {
