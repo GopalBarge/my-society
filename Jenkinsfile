@@ -1,25 +1,24 @@
-node('master') {
-  stage('Prepare') {
-
-  }
-
-  stage('Build') {
-
-  }
-
-  stage('Deploy') {
-
-  }
-
-  stage('Test') {
-
-  }
-
-  stage('Release') {
-
-  }
-
-  stage('Deploy @ Prod') {
-
-  }
+pipeline {
+    agent any
+    tools {
+        gradle "GRADLE_LATEST"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                  sh 'gradle --version'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
