@@ -23,5 +23,10 @@ pipeline {
 }
 def gradlew(String... args) {
     echo 'Running step....'+args
-    sh "gradlew ${args.join(' ')} -s"
+   /* sh "gradlew ${args.join(' ')} -s" */
+   if (isUnix()) {
+   sh './gradlew clean build'
+   } else {
+   bat 'gradlew.bat clean build'
+   }
 }
