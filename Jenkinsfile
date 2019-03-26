@@ -6,8 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-sh “./gradlew test”
+               gradlew('clean', 'classes')
             }
         }
         stage('Test') {
@@ -21,4 +20,8 @@ sh “./gradlew test”
             }
         }
     }
+}
+def gradlew(String... args) {
+    echo 'Running step....'+args
+    sh "./gradlew ${args.join(' ')} -s"
 }
